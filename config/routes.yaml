@@ -1,0 +1,12 @@
+index:
+    path: /api
+    controller: App\Controller\AnimesController::GetAll
+    methods: GET
+store:
+    path: /api
+    controller: App\Controller\AnimesController::Store
+    methods: POST
+delete:
+    path: /api/{id}
+    controller: App\Controller\AnimesController::Delete
+    methods: DELETE
