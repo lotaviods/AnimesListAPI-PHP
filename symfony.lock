@@ -188,6 +188,9 @@
             "src/Kernel.php"
         ]
     },
+    "symfony/http-client": {
+        "version": "5.x-dev"
+    },
     "symfony/http-client-contracts": {
         "version": "2.3-dev"
     },

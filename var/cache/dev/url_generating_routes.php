@@ -4,4 +4,7 @@
 
 return [
     '_preview_error' => [['code', '_format'], ['_controller' => 'error_controller::preview', '_format' => 'html'], ['code' => '\\d+'], [['variable', '.', '[^/]++', '_format', true], ['variable', '/', '\\d+', 'code', true], ['text', '/_error']], [], []],
+    'index' => [[], ['_controller' => 'App\\Controller\\AnimesController::GetAll'], [], [['text', '/api']], [], []],
+    'store' => [[], ['_controller' => 'App\\Controller\\AnimesController::Store'], [], [['text', '/api']], [], []],
+    'delete' => [['id'], ['_controller' => 'App\\Controller\\AnimesController::Delete'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/api']], [], []],
 ];

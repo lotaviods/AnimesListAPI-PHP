@@ -3,20 +3,24 @@
 namespace App\Controller;
 
 use App\Entity\Animes;
-use App\Repository\AnimesRepository;
 use Doctrine\ORM\EntityManager;
+use App\Repository\AnimesRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Contracts\HttpClient\HttpClientInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class AnimesController extends AbstractController
 {
-    public $entityManager;
-    public $animesRepository;
-    public function __construct(EntityManagerInterface $entityManager, AnimesRepository $animesRepository)
+    private $client;
+    private $entityManager;
+    private $animesRepository;
+
+    public function __construct(EntityManagerInterface $entityManager, AnimesRepository $animesRepository, HttpClientInterface $client)
     {
+        $this->client = $client;
         $this->entityManager = $entityManager;
         $this->animesRepository = $animesRepository;
     }
@@ -53,4 +57,13 @@ class AnimesController extends AbstractController
 
         return new JsonResponse('', Response::HTTP_ACCEPTED);
     }
+
+    // public function getApi(){ MÉTODO PARA DAR GET NA API USANDO SYMFONY
+    //     $response = $this->client->request(
+    //         'GET',
+    //         'http://localhost:3000/api'
+    //     ); 
+    //     $json = json_decode($response->getContent());
+    //         return new JsonResponse($json);
+    // }
 }
